@@ -4,3 +4,6 @@ class User(models.Model):
     photo = models.ImageField()
     name = models.CharField(max_length=100)
     account = models.TextField()
+
+    def __str__(self):
+        return self.name
