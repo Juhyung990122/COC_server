@@ -15,10 +15,11 @@ with open(os.path.join(BASE_DIR, 'secrets.json'), 'rb') as secret_file:
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secrets["SECRET_KEY"]
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',secrets["SECRET_KEY"])
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+#Debug = True
+#DEBUG = bool(os.environ.get('DJANGO_DEBUG',True))
 
 ALLOWED_HOSTS = ['*']
 
