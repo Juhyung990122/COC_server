@@ -2,23 +2,28 @@ import json
 import os
 import datetime
 from pathlib import Path
-import secrets
+#import secrets
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-with open(os.path.join(BASE_DIR, 'secrets.json'), 'rb') as secret_file:
-    secrets = json.load(secret_file)
+#with open(os.path.join(BASE_DIR, 'secrets.json'), 'rb') as secret_file:
+#secrets = json.load(secret_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secrets["SECRET_KEY"]
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','e552c)-=6j!@a9+59eyw)ne714_#qpbco6f_^%i_*=fvgi=)7e')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+<<<<<<< HEAD
 DEBUG = True
+=======
+#Debug = True
+DEBUG = bool(os.environ.get('DJANGO_DEBUG',True))
+>>>>>>> e81ba8d783f2c3d6bf12ade609cc1bd4e89450ce
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,6 +43,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
