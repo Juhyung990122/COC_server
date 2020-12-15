@@ -1,0 +1,1 @@
+web: gunicorn coc_server.wsgi --log-file -
