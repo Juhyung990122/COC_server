@@ -7,7 +7,6 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     content = models.TextField()
     date = models.DateField(auto_now_add=True)
-    reader = models.ForeignKey(User, default='-', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
